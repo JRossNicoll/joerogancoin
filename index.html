@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Official Joe Rogan</title>
+
+    <style>
+      :root {
+        --orange-primary: #ff6b00;
+        --orange-secondary: #ff9d00;
+        --spacing-unit: 20px;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Teko', sans-serif;
+        background: #000;
+        color: #fff;
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Black Ops One', cursive;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: var(--spacing-unit) 0;
+      }
+
+      .header {
+        padding: var(--spacing-unit);
+        text-align: center;
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      .countdown-container {
+        background: transparent;
+        padding: 8px;
+        border-radius: 8px;
+        margin: 10px auto;
+        text-align: center;
+        position: relative;
+        max-width: 300px;
+      }
+
+      .countdown-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid var(--orange-primary);
+        border-radius: 8px;
+        animation: borderAnimation 2s infinite;
+      }
+
+      .countdown-title {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+        color: var(--orange-primary);
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .countdown-segment {
+        text-align: center;
+      }
+
+      .countdown-number {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #fff;
+        min-width: 25px;
+      }
+
+      .countdown-label {
+        font-size: 0.7rem;
+        color: var(--orange-primary);
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-unit);
+        flex-wrap: wrap;
+        margin: var(--spacing-unit) 0;
+      }
+
+      .nav-button {
+        position: relative;
+        padding: 10px 20px;
+        color: #fff;
+        text-decoration: none;
+        background: #000;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+      }
+
+      /* Previous button animation styles remain the same */
+
+      .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-unit);
+      }
+
+      .content-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+      }
+
+      .content-section h2 {
+        color: var(--orange-primary);
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2rem;
+      }
+
+      .warning-section {
+        background: rgba(255, 107, 0, 0.1);
+        border: 2px solid var(--orange-primary);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 40px auto;
+        max-width: 800px;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-unit);
+        margin: 40px 0;
+        position: relative;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: var(--spacing-unit);
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease;
+        border: 2px solid var(--orange-primary);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        animation: borderPulse 2s infinite;
+        animation-delay: calc(var(--animation-order) * 0.5s);
+      }
+
+      .feature-card:nth-child(1) { --animation-order: 0; }
+      .feature-card:nth-child(2) { --animation-order: 1; }
+      .feature-card:nth-child(3) { --animation-order: 2; }
+      .feature-card:nth-child(4) { --animation-order: 3; }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 107, 0, 0.1);
+        border-color: var(--orange-primary);
+      }
+
+      /* Rest of the previous styles remain the same */
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <header class="header">
+        <h1>The Podcaster Coin is $JRE</h1>
+        
+        <div class="countdown-container">
+          <div class="countdown-title">Appearance on #JRE</div>
+          <div class="countdown">
+            <div class="countdown-segment">
+              <div class="countdown-number" id="days">00</div>
+              <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-segment">
+              <div class="countdown-number" id="hours">00</div>
+              <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-segment">
+              <div class="countdown-number" id="minutes">00</div>
+              <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-segment">
+              <div class="countdown-number" id="seconds">00</div>
+              <div class="countdown-label">Seconds</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-buttons">
+          <a href="#" class="nav-button">pump.fun</a>
+          <a href="#" class="nav-button">twitter</a>
+          <a href="#" class="nav-button">telegram</a>
+          <a href="#" class="nav-button">solscan</a>
+          <a href="#" class="nav-button">JRE</a>
+        </div>
+      </header>
+      
+      <main class="main-content">
+        <div style="height: 400px;"></div>
+        
+        <div class="content-section">
+          <h2>Why Joe Rogan Coin Exists</h2>
+          <p>Because we're sick of watered-down, spammy tokens that promise the world and deliver a fart in the wind. JRC is the anti-sellout coin: a place where you can speak your mind without bending over to every bureaucratic whim. Think of it like one long, unfiltered podcast—no sponsor breaks, no censorship, no sugar-coated nonsense.</p>
+        </div>
+
+        <div class="content-section">
+          <h2>Why You'll Care</h2>
+          <p>Im personal friends with Joe and have created about 40 original posters for him, he even calls me "Marty" for fucks sake and im scheduled to be on the infamous JRE podcast in a few days... and also because this isn't just another altcoin or meme coin. It's a giant middle finger to the status quo, fueled by the same energy you hear on every unfiltered, no-holds-barred podcast. A place for free-thinkers, fighters, comedians, and maybe that weird friend who claims to have been abducted by aliens.</p>
+        </div>
+
+        <div class="features">
+          <div class="feature-card">
+            <h3>No More Financial BS</h3>
+            <p>Break free from the suits and their fancy buzzwords. This is raw, unfiltered DeFi for people who think for themselves.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>By The People, For Real</h3>
+            <p>No corporate overlords, no fancy boardrooms. Just a community of straight shooters making moves together.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>Clear As Day</h3>
+            <p>What you see is what you get. No fine print, no hidden agendas. We're putting it all on the table.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Breaking New Ground</h3>
+            <p>While others play it safe, we're out here pushing boundaries and taking calculated risks. No participation trophies here.</p>
+          </div>
+        </div>
+
+        <div class="warning-section">
+          <h2>Warning Label</h2>
+          <p>Look, we're not your mom. You do what you want with your money. This project isn't officially backed by Joe Rogan (YET) —he might not even know it exists, for all we know. So don't expect him to come riding in on an elk with a protein shake, praising JRC. This is a hypothetical, fan-driven, rowdy idea, and if it ever takes off for real, you'd better buckle up.</p>
+          <p>Invest or don't—just don't whine about it. If it tanks, that's on you; if it moons, well, that's on you too. We're here to bring out your inner chimp, have some wild conversations, and maybe make a mark on the crypto scene.</p>
+        </div>
+      </main>
+      <footer style="text-align: center; padding: 20px; color: #ff6b00; font-size: 0.8rem; font-family: 'Teko', sans-serif;">
+        Proud Apes and Savages created this
+      </footer>
+    </div>
+
+    <!-- Countdown Script -->
+    <script>
+      const countdownDate = new Date();
+      countdownDate.setDate(countdownDate.getDate() + 3);
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days.toString().padStart(2, '0');
+        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+        document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+        document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          document.querySelector(".countdown-container").innerHTML = "<h2>Event Started!</h2>";
+        }
+      }
+
+      updateCountdown();
+      const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
